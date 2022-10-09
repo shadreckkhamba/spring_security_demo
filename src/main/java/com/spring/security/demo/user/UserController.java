@@ -32,7 +32,7 @@ public class  UserController {
         return userService.saveUser(userSignUpRequest);
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN') and hasRole('ROLE_EXECUTIVE')")
     @GetMapping
     public ResponseEntity<PagedModel<?>> getAllUsers(@PositiveOrZero  @RequestParam(value="page", defaultValue = "0") int page,
                                                       @Positive @RequestParam(value="size", defaultValue = "20") int size,
